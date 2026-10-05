@@ -3,8 +3,7 @@ public class UrlService {
 	private HashMap<String, ShortUrl> urls = new HashMap<>();	
 	//String --> is the key
 	//ShortUrl --> is the value
-	ShortUrl su = new ShortUrl();
-	private String theurlshort = su.geturl();
-	private String theurlItself = su.geturlItself();
+	//"a7K2x"  →  [ shortCode = "a7K2x", longUrl = "https://youtube.com" ]
+
 	
 }
