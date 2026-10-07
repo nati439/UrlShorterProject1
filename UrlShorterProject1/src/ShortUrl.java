@@ -7,6 +7,15 @@ public class ShortUrl {
 	private String urlshort;
 	
 	public ShortUrl(String urlLong,String urlshort) {
-		
+		this.urlLong = urlLong;
+		this.urlshort = urlshort;
+	}
+	
+	public String geturllong() {
+		return this.urlLong;
+	}
+	
+	public String geturlshort() {
+		return this.urlshort;
 	}
 }
