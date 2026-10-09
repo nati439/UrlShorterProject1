@@ -23,6 +23,12 @@ public class UrlService {
 	}
 	public String shorten(String longurls) {
 		//this method should just call random no logic.
+		String logic1 = logic();
+		//add logic1 into urls
+		//return the logic1
+		ShortUrl su = new ShortUrl(longurls, logic1);
+		urls.put(logic1, su);
+		return logic1;
 	}
 }
 
