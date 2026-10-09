@@ -30,6 +30,16 @@ public class UrlService {
 		urls.put(logic1, su);
 		return logic1;
 	}
+	
+	//resolve() take short url and give up long one.
+	
+	public String resolve(String shorturls) {
+		if (urls.containsKey(shorturls)) {
+			ShortUrl x =  urls.get(shorturls);
+			return(x.geturllong());
+		}
+		return "Must shorten first";
+	}
 }
 
 
