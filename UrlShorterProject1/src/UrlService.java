@@ -23,17 +23,6 @@ public class UrlService {
 	}
 	public String shorten(String longurls) {
 		//this method should just call random no logic.
-		int size = 0;
-		String rand = "";
-		while(size < 3) {
-			rand += random.nextInt(8);
-			rand += String.valueOf((char) ('a' + random.nextInt(26)));	
-			rand += String.valueOf((char) ('A' + random.nextInt(26)));
-			size++;
-		}
-
-		//send to hashmap both longurl and short url 
-		//Return shorturl
 	}
 }
 
