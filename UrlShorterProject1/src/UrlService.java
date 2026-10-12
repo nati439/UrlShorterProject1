@@ -2,6 +2,9 @@ import java.util.HashMap;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
 public class UrlService {
 	private HashMap<String, ShortUrl> urls = new HashMap<>();	
 	//String --> is the key
@@ -44,12 +47,29 @@ public class UrlService {
 		return "Must shorten first";
 	}
 	
-	public void savefile() throws IOException {
+	public void writeToFile() throws IOException {
 	    FileWriter writer = new FileWriter("urls.txt");
 	    for (ShortUrl i : urls.values()) {
 	        writer.write(i.geturlshort() + " " + i.geturllong() + "\n");
 	    }
 	    writer.close();
+	}
+	
+	public void readToFile() throws IOException{
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader("urls.txt"));
+
+			String line;
+			while((line = reader.readLine()) != null) {
+				String[] lists = line.split(" ");
+				urls.put(lists[0], new ShortUrl(lists[1], lists[0]));
+			}
+		reader.close();
+		}catch(FileNotFoundException e) {
+			
+		}
+		
+		
 	}
 	
 }
