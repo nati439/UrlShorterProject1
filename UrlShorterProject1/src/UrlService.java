@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 public class UrlService {
 	private HashMap<String, ShortUrl> urls = new HashMap<>();	
@@ -8,7 +10,6 @@ public class UrlService {
 	private Random random = new Random();
 	//The generator is an object that can produce random numbers when you ask it.
 	private final String CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
 	public String logic () {
 		String ans = "";
 		int size = 0;
@@ -42,6 +43,15 @@ public class UrlService {
 		}
 		return "Must shorten first";
 	}
+	
+	public void savefile() throws IOException {
+	    FileWriter writer = new FileWriter("urls.txt");
+	    for (ShortUrl i : urls.values()) {
+	        writer.write(i.geturlshort() + " " + i.geturllong() + "\n");
+	    }
+	    writer.close();
+	}
+	
 }
 
 

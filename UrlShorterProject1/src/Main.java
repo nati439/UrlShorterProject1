@@ -1,29 +1,35 @@
 import java.util.Scanner;
+import java.io.File;
 public class Main {
 	public static void main(String[] args) {
 		//Scanner
 		Scanner scanner = new Scanner(System.in);
 		
+		UrlService us = new UrlService();
 		//while loop and exit
 		while(true) {
 			//ask
 			System.out.println("1. Shorten 2. Resolve 3. Exit");
 			String qna = scanner.nextLine();
-			System.out.println("LONG URL: ");
-			String shortens = scanner.nextLine();
-
-			if (qna == "1") {
-				UrlService us = new UrlService();
+			
+			if (qna.equals("1")) {
+				System.out.println("LONG URL: ");
+				String shortens = scanner.nextLine();
 				System.out.println(us.shorten(shortens));
 		
+			}else if(qna.equals("2")) {
+				System.out.println("Short url: ");
+				String resolves = scanner.nextLine();
+				System.out.println(us.resolve(resolves));
+			}else if(qna.equals("3")) {
+				break;
+			}else {
+				System.out.println("1 2 or 3 NOTHING ELSE");
 			}
 			
 		}
-		//1.resorve 2. shorten
-		//2:
-			//add there answer to class and return result. 
-		//1. resortve
-			//add there answer to class and return result. 
-		
+		System.out.println(new File("urls.txt").getAbsolutePath());
 	}
+	
+	
 }
