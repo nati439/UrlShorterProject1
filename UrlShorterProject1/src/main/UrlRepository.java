@@ -45,10 +45,24 @@ public class UrlRepository {
 	    	    }
 	    	}
 	    }
-	
-	    	
-	    	
-	    
-	    
 	    //sendUrl from db to urlservice
+	    public String sendUrl(String shortUrls) throws SQLException{
+	    	 //read from the db shortUrls. Return long if it exist if not return "not there"
+	    	
+	    	String sql = "select long_url from url_storage where short_url = ?";
+	    	try(Connection conn = UrlRepository.getConnection()){
+	    		try (PreparedStatement stmt = conn.prepareStatement(sql)){
+	    			stmt.setString(1, shortUrls);
+		    		try(ResultSet rs = stmt.executeQuery()){
+			    		if(rs.next() == true) {
+			    			return rs.getString(1);
+			    		}else {
+			    			return "This short url not valid";
+			    		}
+			    	}
+	    		}	
+	    		
+	    	}
+	    	
+	    }
 }
