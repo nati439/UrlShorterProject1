@@ -45,30 +45,7 @@ public class UrlService {
 		return store;
 	}
 	
-	public void writeToFile() throws IOException {
-	    FileWriter writer = new FileWriter("urls.txt");
-	    for (ShortUrl i : urls.values()) {
-	        writer.write(i.geturlshort() + " " + i.geturllong() + "\n");
-	    }
-	    writer.close();
-	}
 	
-	public void readToFile() throws IOException{
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader("urls.txt"));
-
-			String line;
-			while((line = reader.readLine()) != null) {
-				String[] lists = line.split(" ");
-				urls.put(lists[0], new ShortUrl(lists[1], lists[0]));
-			}
-		reader.close();
-		}catch(FileNotFoundException e) {
-			
-		}
-		
-		
-	}
 	
 }
 
