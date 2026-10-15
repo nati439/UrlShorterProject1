@@ -36,12 +36,13 @@ public class UrlService {
 	
 	//resolve() take short url and give up long one.
 	
-	public String resolve(String shorturls) {
-		if (urls.containsKey(shorturls)) {
-			ShortUrl x =  urls.get(shorturls);
-			return(x.geturllong());
+	public String resolve(String shorturls) throws SQLException{
+		UrlRepository ur = new UrlRepository();
+		String store = ur.sendUrl(shorturls);
+		if (store.equals("This short url not valid")) {
+			return "Must shorten first";
 		}
-		return "Must shorten first";
+		return store;
 	}
 	
 	public void writeToFile() throws IOException {
