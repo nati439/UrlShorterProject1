@@ -6,10 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 public class UrlService {
-	private HashMap<String, ShortUrl> urls = new HashMap<>();	
-	//String --> is the key
-	//ShortUrl --> is the value
-	//"a7K2x"  →  [ shortCode = "a7K2x", longUrl = "https://youtube.com" ]
+
 	private Random random = new Random();
 	//The generator is an object that can produce random numbers when you ask it.
 	private final String CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -25,16 +22,16 @@ public class UrlService {
 		return ans;
 		
 	}
-	public String shorten(String longurls) {
-		//this method should just call random no logic.
-		String logic1 = logic();
-		while (urls.containsKey(logic1)) {
-			logic1 = logic();
-		}
-		
-		ShortUrl su = new ShortUrl(longurls, logic1);
-		urls.put(logic1, su);
-		return logic1;
+	
+	public String shorten(String longurls) throws SQLException {
+	    UrlRepository ur = new UrlRepository();
+	    ShortUrl su = new ShortUrl(longurls, logic());
+
+	    while (!ur.receiveUrl(su)) {
+	        su = new ShortUrl(longurls, logic());
+	    }
+
+	    return su.geturlshort();
 	}
 	
 	//resolve() take short url and give up long one.
