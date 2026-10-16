@@ -2,14 +2,15 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileReader;
+import java.sql.SQLException;
 public class Main {
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws SQLException{
 		
 		//Scanner
 		Scanner scanner = new Scanner(System.in);
 		
 		UrlService us = new UrlService();
-		us.readToFile();
+
 		
 
 		//while loop and exit
@@ -22,7 +23,6 @@ public class Main {
 				System.out.println("LONG URL: ");
 				String shortens = scanner.nextLine();
 				System.out.println(us.shorten(shortens));
-				us.writeToFile();
 			}else if(qna.equals("2")) {
 				System.out.println("Short url: ");
 				String resolves = scanner.nextLine();

@@ -7,14 +7,13 @@ public class UrlRepository {
 	
 		
 		
-	    private static final String URL = "jdbc:mysql://localhost:3306/nati";
+	    private static final String URL = "jdbc:mysql://localhost:3306/url_shortener";
 	    private static final String USER = "nati";
 	    private static final String PASSWORD = "nati123";
 	 
 	    public static Connection getConnection() throws SQLException {
 	        return DriverManager.getConnection(URL, USER, PASSWORD);
 	    }
-    	Connection conn = UrlRepository.getConnection();
     	// Ask UrlRepository to connect to MySQL and store the connection
     	// in the variable conn so we can use it to execute SQL commands
 	    public boolean receiveUrl(ShortUrl su) throws SQLException{
