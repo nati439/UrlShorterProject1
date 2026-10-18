@@ -13,7 +13,7 @@ public class UrlService {
 			ans += CHARS.charAt(i);
 			size ++;
 		}
-		
+	
 		return ans;
 		
 	}

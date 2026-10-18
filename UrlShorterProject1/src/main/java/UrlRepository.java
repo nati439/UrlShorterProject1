@@ -14,7 +14,7 @@ public class UrlRepository {
 	    public static Connection getConnection() throws SQLException {
 	        return DriverManager.getConnection(URL, USER, PASSWORD);
 	    }
-    	// Ask UrlRepository to connect to MySQL and store the connection
+	    // Ask UrlRepository to connect to MySQL and store the connection
     	// in the variable conn so we can use it to execute SQL commands
 	    public boolean receiveUrl(ShortUrl su) throws SQLException{
 	    	//main: query into database. 

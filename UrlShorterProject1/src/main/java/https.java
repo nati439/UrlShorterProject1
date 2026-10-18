@@ -14,7 +14,7 @@ public class https {
         );
 
         server.createContext("/shorten", exchange -> {
-
+        RedirectHandler.register(server);	
             // Only allow POST requests
             if (!exchange.getRequestMethod().equals("POST")) {
                 exchange.sendResponseHeaders(405, -1);
