@@ -21,12 +21,7 @@ public class RedirectHandler{
              try {
                  String longurl = us.resolve(code);
 
-                 byte[] bytes = longurl.getBytes(StandardCharsets.UTF_8);
-
-
-                 try (OutputStream output = exchange.getResponseBody()) {
-                     output.write(bytes);
-                 }
+          
                  exchange.getResponseHeaders().set("Location", longurl);
                  exchange.sendResponseHeaders(302, -1);
                  exchange.close();
@@ -44,6 +39,8 @@ public class RedirectHandler{
                      output.write(bytes);
                  }
              }
+             
+             
              
         });
     }
