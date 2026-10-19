@@ -14,7 +14,7 @@ public class https {
         );
 
         server.createContext("/shorten", exchange -> {
-        RedirectHandler.register(server);	
+//        RedirectHandler.register(server);	
             // Only allow POST requests
             if (!exchange.getRequestMethod().equals("POST")) {
                 exchange.sendResponseHeaders(405, -1);
@@ -78,7 +78,8 @@ public class https {
 
             exchange.close();
         });
-
+        RedirectHandler.register(server);	
+//        /shorten is a more specific path than /, so a request to /shorten goes to the shorten handler, and any other path goes to the redirect handler.
         server.start();
 
         System.out.println("Server running on port 8080");
