@@ -19,16 +19,17 @@ public class RedirectHandler{
         	
 
              try {
-                 String shortCode = us.resolve(code);
+                 String longurl = us.resolve(code);
 
-                 byte[] bytes = shortCode.getBytes(StandardCharsets.UTF_8);
+                 byte[] bytes = longurl.getBytes(StandardCharsets.UTF_8);
 
-                 exchange.sendResponseHeaders(200, bytes.length);
 
                  try (OutputStream output = exchange.getResponseBody()) {
                      output.write(bytes);
                  }
-
+                 exchange.getResponseHeaders().set("Location", longurl);
+                 exchange.sendResponseHeaders(302, -1);
+                 exchange.close();
              } catch (SQLException e) {
                  // Log the actual database error
                  e.printStackTrace();
@@ -43,6 +44,7 @@ public class RedirectHandler{
                      output.write(bytes);
                  }
              }
+             
         });
     }
 }
