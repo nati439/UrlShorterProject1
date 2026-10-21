@@ -19,6 +19,13 @@ public class UrlService {
 	}
 	
 	public String shorten(String longurls) throws SQLException {
+	    boolean validHttps = longurls.startsWith("https://") && longurls.length() > 8;
+	    boolean validHttp = longurls.startsWith("http://") && longurls.length() > 7;
+
+	    if (!validHttps && !validHttp) {
+	        return null;
+	    }
+
 	    UrlRepository ur = new UrlRepository();
 	    ShortUrl su = new ShortUrl(longurls, logic());
 
